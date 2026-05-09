@@ -5,9 +5,6 @@ on:
     branches: ["master", "main"]
   workflow_dispatch:
 
-env:
-  IMAGE_NAME: zymorok/gametracker
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,16 +16,13 @@ jobs:
       - name: 2. Показать файлы
         run: find . -maxdepth 5 -type f
 
-      - name: 3. Настроить Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: 4. Логин в Docker Hub
+      - name: 3. Логин в Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 5. Собрать и отправить образ в Docker Hub
+      - name: 4. Собрать и отправить образ в Docker Hub
         uses: docker/build-push-action@v6
         with:
           context: .
