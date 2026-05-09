@@ -22,7 +22,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: GameTracker/GameTracker/Dockerfile
+          file: GameTracker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
-
