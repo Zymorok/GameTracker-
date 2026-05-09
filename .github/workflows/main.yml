@@ -12,16 +12,19 @@ jobs:
       - name: 1. Загрузить код из репозитория
         uses: actions/checkout@v4
 
-      - name: 2. Логин в Docker Hub
+      - name: 2. Показать файлы
+        run: find . -maxdepth 5 -type f
+
+      - name: 3. Логин в Docker Hub
         uses: docker/login-action@v4
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: 3. Собрать и отправить образ в Docker Hub
+      - name: 4. Собрать и отправить образ в Docker Hub
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: GameTracker/Dockerfile
+          file: GameTracker/DockerFile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
