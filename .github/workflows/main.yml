@@ -25,3 +25,4 @@ jobs:
           file: GameTracker/GameTracker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
+
