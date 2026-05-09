@@ -35,5 +35,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:v${{ github.run_number }}
+            zymorok/gametracker:latest
+            zymorok/gametracker:v${{ github.run_number }}
