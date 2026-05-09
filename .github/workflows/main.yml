@@ -31,3 +31,4 @@ jobs:
           tags: |
             zymorok/gametracker:latest
             zymorok/gametracker:v${{ github.run_number }}
+
