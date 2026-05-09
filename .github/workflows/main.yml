@@ -29,6 +29,5 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            zymorok/gametracker:latest
-            zymorok/gametracker:v${{ github.run_number }}
-
+            ${{ secrets.DOCKER_USERNAME }}/gametracker:latest
+            ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
