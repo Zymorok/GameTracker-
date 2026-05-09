@@ -31,3 +31,19 @@ jobs:
           tags: |
             ${{ secrets.DOCKER_USERNAME }}/gametracker:latest
             ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
+
+      - name: 5. Отправить уведомление в Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          format: html
+          message: |
+            ✅ <b>Docker image успешно опубликован!</b>
+
+            📦 <b>Репозиторий:</b> ${{ github.repository }}
+            🔢 <b>Номер сборки:</b> ${{ github.run_number }}
+            👨‍💻 <b>Автор коммита:</b> ${{ github.actor }}
+            🐳 <b>Docker image:</b> ${{ secrets.DOCKER_USERNAME }}/gametracker:v${{ github.run_number }}
+
+            🔗 <a href="${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}">Открыть коммит на GitHub</a>
