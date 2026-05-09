@@ -26,3 +26,23 @@ dotnet run --project GameTracker/GameTracker.csproj
 ```bash
 dotnet build GameTracker.sln
 ```
+
+## Docker
+
+Build the image locally:
+
+```bash
+docker build -t zymorok/gametracker .
+```
+
+Run the container:
+
+```bash
+docker run --rm -it zymorok/gametracker
+```
+
+GitHub Actions publishes the image to Docker Hub on every push to `main`.
+The repository must contain these Actions secrets:
+
+- `DOCKER_USERNAME`
+- `DOCKER_PASSWORD`
